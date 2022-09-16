@@ -1,30 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Screen Readers</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <style></style>
-  </head>
-  <body class="main">
-    <header>
-      <ul>
-        <li><a href="../visual-considerations/index.html">&larr; back</a></li>
-      </ul>
-    </header>
-    <div id="container">
-      <h1>Exercise 5</h1>
-      <p>
-        For this exercise, read the user's dark/light mode preference and set
-        the background to either black or white. For extra credit, allow the
-        checkbox below to override that setting!
-      </p>
-      <label>
-        Enable Dark Mode
-        <input id="input" type="checkbox" />
-      </label>
-    </div>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Screen Readers</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style></style>
+</head>
+
+<body class="main">
+  <header>
+    <ul>
+      <li><a href="../visual-considerations/index.html">&larr; back</a></li>
+    </ul>
+  </header>
+  <div id="container">
+    <h1>Exercise 5</h1>
+    <p>
+      For this exercise, read the user's dark/light mode preference and set
+      the background to either black or white. For extra credit, allow the
+      checkbox below to override that setting!
+    </p>
+    <label>
+      Enable Dark Mode
+      <input id="input" type="checkbox" />
+    </label>
+  </div>
+  <script>
+    const darkModeCheckBox = document.getElementById("input")
+    const mainEl = document.querySelector(".main")
+
+    function isColorSchemeSupported() {
+      return window.matchMedia("(prefers-color-scheme)").media !== "not all"
+    }
+
+    function isColorSchemeDark() {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+    }
+
+    function setDarkModeCheckboxValue() {
+      if (isColorSchemeDark()) {
+        darkModeCheckBox.checked = true
+      } else {
+        darkModeCheckBox.checked = false
+      }
+    }
+
+    if (isColorSchemeSupported()) {
+      // onload set the value for the checkbox
+      setDarkModeCheckboxValue()
+
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (evt) => {
+        // whenever the user preferences change, re-set the value for the checkbox
+        setDarkModeCheckboxValue()
+
+        // remove classes and let the media queries to the job
+        mainEl.classList.remove("light")
+        mainEl.classList.remove("dark")
+      })
+    }
+
+    darkModeCheckBox.addEventListener("change", () => {
+      const isDarkMode = darkModeCheckBox.checked
+
+      if (isDarkMode) {
+        mainEl.classList.remove("light")
+        mainEl.classList.add("dark")
+      } else {
+        mainEl.classList.remove("dark")
+        mainEl.classList.add("light")
+      }
+    })
+
+  </script>
+</body>
+
 </html>

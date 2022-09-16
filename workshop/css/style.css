@@ -458,3 +458,27 @@ pre[class*="language-"] {
   visibility: visible;
   top: 0px;
 }
+
+.main.dark {
+  background-color: black;
+  color: white;
+}
+
+.main.light {
+  background-color: white;
+  color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  .main {
+    background-color: black;
+    color: white;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .main {
+    background-color: white;
+    color: black;
+  }
+}
