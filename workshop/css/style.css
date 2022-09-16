@@ -448,3 +448,13 @@ pre[class*="language-"] {
 .token.entity {
   cursor: help;
 }
+
+.hidden {
+  position: absolute;
+  top: -50px;
+}
+
+.skip-link:focus-visible {
+  visibility: visible;
+  top: 0px;
+}
