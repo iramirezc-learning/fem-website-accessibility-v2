@@ -10,8 +10,8 @@ Personal repository for the course [Website Accessibility (v2)](https://frontend
 - ⏳ **Course Duration:** 2 hours, 52 minutes
 - 📅 **Published On:** Jun 8, 2021
 - 🏁 **Started On:** Aug 30, 2022
-- ✅ **Completed On:** ???
-- 🍅 **Focus Time:** ???
+- ✅ **Completed On:** Sep 15, 2022
+- 🍅 **Focus Time:** 6 hours, 40 minutes (17)
 
 ## Course Resources
 
